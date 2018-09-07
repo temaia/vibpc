@@ -1,0 +1,3 @@
+
+Data Storage:Raw data are temporarily stored and backed up on the server of the core facility. All raw data will be deleted wihout warning after 2 years. In case an extension to this perios is required, the facility manager should be informed timely.
+Acknowledgements:In case data collected by use of the Proteomics Core equipment is used in publications, the Proteomics Core needs to be acknowledged.
