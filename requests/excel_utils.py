@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import StringIO
+import io
 import xlsxwriter
 from django.utils.translation import ugettext
 from django.db.models import Avg, Sum, Max, Min
@@ -9,7 +9,7 @@ from django.db.models import Avg, Sum, Max, Min
 
 
 def WriteToExcel():
-    output = StringIO.StringIO()
+    output = io.StringIO()
     workbook = xlsxwriter.Workbook(output)
     worksheet_s = workbook.add_worksheet("Summary")
 
