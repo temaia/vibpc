@@ -24,7 +24,7 @@ from django.contrib import auth
 from django.contrib.auth import views as auth_views
 from requests.forms import AnalysisForm, ProfileForm, Specimen_SGForm,Specimen_APMSForm,Specimen_PTMForm,Specimen_GBForm, EDForm
 #from requests.views import AboutView,HomeView, CustomerRegistrationView,AnalysisRegistrationView, AnalysisForm, CustomerForm, Specimen_SGForm, ContactWizard
-from requests.views import AboutView,HomeView, AnalysisRegistrationView, AnalysisForm,ExperimentForm,Specimen_SGForm, ContactWizardSG,ContactWizardPTM,ContactWizardAPMS,ContactWizardGB, LoginView,SGView#,ProjectRegistrationView
+from requests.views import AboutView,HomeView, sample_deliveryView,contactView, AnalysisRegistrationView, questionsView, AnalysisForm,ExperimentForm,Specimen_SGForm, ContactWizardSG,ContactWizardPTM,ContactWizardAPMS,ContactWizardGB, LoginView,SGView#,ProjectRegistrationView
 from django.views.generic import TemplateView
 #from requests.views import AboutView,HomeView, AnalysisRegistrationView, AnalysisForm, CustomerForm, Specimen_SGForm, ContactWizard
 
@@ -34,8 +34,10 @@ from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^sampledelivery/',  sample_deliveryView.as_view(template_name='sample-delivery3.html'),name='sample_delivery'),
     #url(r'^pportal/',include('pportal.urls')),
     url(r'^$', HomeView.as_view(template_name='home.html'), name='home'),
+    url(r'^questions/',  questionsView.as_view(template_name='questions.html'),name='questions'),
     #url(r'^project-registration/$', ContactWizard.as_view([CustomerForm,AnalysisForm, Specimen_SGForm]),name='project-registration'),
     #url(r'^project-registration/$', ContactWizard.as_view([AnalysisForm, Specimen_SGForm, ExperimentForm]),name='project-registration'),
     #url(r'^project-registration/$', HomeView.as_view(template_name='home.html') ,name='project-registration'),
@@ -50,7 +52,7 @@ urlpatterns = [
     url(r'^project-registration/$', login_required(views.get_user_profile), name='projectregistration'),
     url(r'^requestt_page/$', views.requestt_page, name='requestt_page'),
     #url(r'^project-registration/$', views.get_user_profile, name='projectregistration'),
-    
+    url(r'^contact/',  contactView.as_view(template_name='contact.html'),name='contact'),
     #url(r'^project-info/$', views.get_user_projectinfo, name='projectinfo'),
     #url(r'^profile/(?P<email>\w+)/$', views.get_user_profile, name='profile'),
     url(r'^about/$', AboutView.as_view(template_name='about.html'),name='about'),

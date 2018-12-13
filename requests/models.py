@@ -104,18 +104,18 @@ class Profile(models.Model):
 
 	Issue = models.CharField(max_length=200, blank=True)
 	user=models.OneToOneField(User, on_delete=models.CASCADE)
- 	Name = models.CharField(max_length=120)
+	Name = models.CharField(max_length=120)
  	# Emailadress = models.EmailField(max_length=120)
- 	Study_Type = models.CharField(max_length=50, choices=STUDYTYPES)
- 	Group_Leader = models.CharField(max_length=120)
- 	Analysis_Type = models.CharField(max_length=50 , choices=ANALYSISTYPES)
- 	timestamp = models.DateTimeField(auto_now_add=True)
- 	def __unicode__(self):
- 		return self.Name
- 	def __str__(self):
- 		return self.Name
- 	def getAnalysisType(self):
- 		return dict(Profile.ANALYSISTYPES)[self.Analysis_Type]
+	Study_Type = models.CharField(max_length=50, choices=STUDYTYPES)
+	Group_Leader = models.CharField(max_length=120)
+	Analysis_Type = models.CharField(max_length=50 , choices=ANALYSISTYPES)
+	timestamp = models.DateTimeField(auto_now_add=True)
+	def __unicode__(self):
+		return self.Name
+	def __str__(self):
+		return self.Name
+	def getAnalysisType(self):
+		return dict(Profile.ANALYSISTYPES)[self.Analysis_Type]
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender,instance,created, **kwargs):
@@ -171,10 +171,10 @@ class Analysis(models.Model):
 	#Data_analysis = models.BooleanField(choices=DATAANALYSIS)
 	#Data_analysis = models.BooleanField()
 #class Profile_extra(models.Model):
- 	Affiliation = models.CharField(max_length=120)
- 	Address = models.CharField(max_length=300)
- 	#def __unicode__(self):
- 	#	return self.Name
+	Affiliation = models.CharField(max_length=120)
+	Address = models.CharField(max_length=300)
+	#def __unicode__(self):
+	#	return self.Name
 	def __unicode__(self):
 		return self.Project_summary
 

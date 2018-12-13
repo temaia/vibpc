@@ -40,7 +40,7 @@ from django.core.mail import send_mail
 import sys
 sys.path.insert(0, '/home/pportal/dev2/src/lib/python2.7/site-packages/youtrack/')
 # authenticating
-import httplib, urllib2
+import http.client, urllib.request, urllib.error
 
 #import socks
 from youtrack import connection
@@ -409,7 +409,7 @@ class ContactWizardPTM(SessionWizardView):
             return initial
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
-		return super(ContactWizardPTM, self).dispatch(*args, **kwargs)
+        return super(ContactWizardPTM, self).dispatch(*args, **kwargs)
 
 
 class ContactWizardGB(SessionWizardView):
@@ -522,9 +522,26 @@ class HomeView(TemplateView):
 #             initial.update({'Generic_Sample_Name':Issue})
 #             return initial
 
+class sample_deliveryView(TemplateView):
+    template_name = 'sample-delivery3.html'
+
 # def about(request):
 # 	context = {}
 # 	return render(request, 'about.html', context)
+
+class contactView(TemplateView):
+    template_name = 'contact.html'
+
+# def about(request):
+#   context = {}
+#   return render(request, 'about.html', context)
+
+class questionsView(TemplateView):
+    template_name = 'questions.html'
+
+# def about(request):
+#   context = {}
+#   return render(request, 'about.html', context)
 
 class AboutView(TemplateView):
 	template_name = 'about.html'
